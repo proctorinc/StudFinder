@@ -1,9 +1,15 @@
 import { render, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { ProfilesProvider } from "@/context/ProfilesContext";
+
 
 const providers = ({ children }) => {
-  return children;
+  return (
+    <ProfilesProvider>
+      {children}
+    </ProfilesProvider>
+  )
 };
 
 const customRender = (ui, options) =>

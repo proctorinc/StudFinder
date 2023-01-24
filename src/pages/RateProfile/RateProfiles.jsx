@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-import { mockProfiles } from "@/__mocks__/profiles"
+import useProfiles from "@/hooks/useProfiles"
+
 import Profile from "./Profile"
 
 
-const RateProfile = () => {
+const RateProfiles = () => {
   const [rating, setRating] = useState(3)
-  const profile = mockProfiles[0]
+  const { currentProfile, getNextProfile } = useProfiles()
 
   const handleRatingChange = (event) => {
       setRating(event.target.value)
@@ -14,11 +15,11 @@ const RateProfile = () => {
 
   return (
     <>
-      <Profile user={profile} />
+      <Profile user={currentProfile} />
       <input type="range" value={rating} min={1} max={5} step={1} onChange={handleRatingChange} />
-      <button>Rate!</button>
+      <button onClick={getNextProfile} >Rate!</button>
     </>
   )
 }
 
-export default RateProfile
+export default RateProfiles

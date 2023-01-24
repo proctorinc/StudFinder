@@ -1,14 +1,15 @@
 import { Navbar } from '@/components/ui/Navbar'
-import RateProfile from '@/pages/RateProfile/RateProfile'
+import RateProfiles from '@/pages/RateProfile/RateProfiles'
+import { ProfilesProvider } from '@/context/ProfilesContext'
 
 import './App.css'
 
 function App() {
   return (
-    <>
+    <ProfilesProvider>
       <Navbar />
-      <RateProfile />
-    </>
+      <RateProfiles />
+    </ProfilesProvider>
   )
 }
 

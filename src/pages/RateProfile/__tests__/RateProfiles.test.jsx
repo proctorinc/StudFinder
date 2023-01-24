@@ -1,10 +1,11 @@
 import { describe, it } from "vitest";
-import { screen, render, fireEvent } from "@/testUtils.jsx";
-import RateProfile from "../RateProfile";
+import { screen, render, fireEvent, userEvent } from "@/testUtils.jsx";
+
+import RateProfiles from "../RateProfiles";
 
 describe("Profile Rating Page", () => {
   beforeEach(() => {
-    render(<RateProfile />);
+    render(<RateProfiles />);
 
   })
   it("renders the rating page", () => {
@@ -59,5 +60,38 @@ describe("Profile Rating Page", () => {
     fireEvent.change(ratingInput, { target: { value: 10 } });
 
     expect(ratingInput).toHaveValue("5");
+  })
+
+  it("changes the profile after clicking the rate button", async () => {
+    const user = userEvent.setup()
+    const profileImage = screen.getByRole("img", {
+      name: /profile-image/i
+    })
+    const profileName = screen.getByRole("heading", {
+      name: /name: /i
+    })
+    const profileAge = screen.getByRole("heading", {
+      name: /age: /i
+    })
+    const profileOccupation = screen.getByRole("heading", {
+      name: /occupation: /i
+    })
+    const profileDistance = screen.getByRole("heading", {
+      name: /miles away/i
+    })
+    const ratingValue = screen.getByRole("slider")
+    const rateButton = screen.getByRole("button", {
+      name: /rate!/i
+    })
+
+    await user.click(rateButton);
+
+    expect(profileImage).toBeInTheDocument();
+    expect(profileOccupation).toHaveTextContent("Construction Worker");
+    expect(profileName).toHaveTextContent("Jane Doe");
+    expect(profileAge).toHaveTextContent("35");
+    expect(profileDistance).toHaveTextContent("37");
+    expect(ratingValue).toHaveValue("3");
+    expect(rateButton).toBeInTheDocument();
   })
 });
