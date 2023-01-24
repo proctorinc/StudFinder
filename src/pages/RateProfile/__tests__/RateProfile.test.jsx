@@ -1,5 +1,5 @@
-import { describe, it, vi } from "vitest";
-import { screen, render, userEvent, fireEvent } from "@/testUtils.jsx";
+import { describe, it } from "vitest";
+import { screen, render, fireEvent } from "@/testUtils.jsx";
 import RateProfile from "../RateProfile";
 
 describe("Profile Rating Page", () => {
@@ -27,7 +27,7 @@ describe("Profile Rating Page", () => {
     const rateButton = screen.getByRole("button", {
       name: /rate!/i
     })
-    
+
     expect(profileImage).toBeInTheDocument();
     expect(profileOccupation).toHaveTextContent("Plumber");
     expect(profileName).toHaveTextContent("John Smith");
