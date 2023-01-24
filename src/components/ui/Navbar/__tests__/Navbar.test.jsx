@@ -1,17 +1,13 @@
 import { describe, it, vi } from "vitest";
 import { screen, render, userEvent } from "@/testUtils.jsx";
-import App from "./App";
+import { Navbar } from "../Navbar";
 
-describe("App", () => {
+describe("Navbar", () => {
   beforeEach(() => {
-    render(<App />);
+    render(<Navbar />);
   })
   it("renders the navbar", async () => {
     const navbarTitle = screen.getByText(/studfinder/i)
     expect(navbarTitle).toBeInTheDocument();
-  });
-  it("renders the rating page", async () => {
-    const ratingText = screen.getByText(/rating/i)
-    expect(ratingText).toBeInTheDocument();
   });
 });
