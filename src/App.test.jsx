@@ -26,10 +26,17 @@ describe("App", () => {
     const profileDistance = screen.getByRole("heading", {
       name: /miles away/i
     })
+    const ratingValue = screen.getByRole("slider")
+    const rateButton = screen.getByRole("button", {
+      name: /rate!/i
+    })
+    
     expect(profileImage).toBeInTheDocument();
     expect(profileOccupation).toHaveTextContent("Plumber");
     expect(profileName).toHaveTextContent("John Smith");
     expect(profileAge).toHaveTextContent("52");
     expect(profileDistance).toHaveTextContent("5");
+    expect(ratingValue).toHaveValue("3");
+    expect(rateButton).toBeInTheDocument();
   });
 });
