@@ -1,12 +1,12 @@
 import './App.css'
 import { Navbar } from './components/ui/Navbar'
-import Rating from './pages/rating/Rating'
+import RateProfile from './pages/RateProfile/RateProfile'
 
 function App() {
   return (
     <>
       <Navbar />
-      <Rating />
+      <RateProfile />
     </>
   )
 }

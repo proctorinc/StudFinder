@@ -1,15 +1,11 @@
 import { describe, it, vi } from "vitest";
 import { screen, render, userEvent } from "@/testUtils.jsx";
-import App from "./App";
+import RateProfile from "../RateProfile";
 
-describe("App", () => {
+describe("Profile Rating Page", () => {
   beforeEach(() => {
-    render(<App />);
+    render(<RateProfile />);
   })
-  it("renders the navbar", async () => {
-    const navbarTitle = screen.getByText(/studfinder/i)
-    expect(navbarTitle).toBeInTheDocument();
-  });
   it("renders the rating page", async () => {
     const profileImage = screen.getByRole("img", {
       name: /profile-image/i
