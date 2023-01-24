@@ -1,10 +1,10 @@
 import { describe, it, vi } from "vitest";
 import { screen, render, userEvent } from "@/testUtils.jsx";
-import App from "./App";
+import Rating from "../Rating";
 
-describe("App", () => {
+describe("Rating Page", () => {
   beforeEach(() => {
-    render(<App />);
+    render(<Rating />);
   })
   it("renders the rating page", async () => {
     const ratingText = screen.getByText(/rating/i)
