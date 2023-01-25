@@ -1,6 +1,13 @@
 import { describe, it } from "vitest";
+
 import { screen, render } from "@/testUtils.jsx";
+import { mockProfiles } from "@/__mocks__/profiles";
 import App from "./App";
+
+vi.mock("@/utils", () => ({
+  ...vi.importActual("@/utils"),
+  generateRandomProfiles: () => mockProfiles,
+}));
 
 describe("App", () => {
   beforeEach(() => {

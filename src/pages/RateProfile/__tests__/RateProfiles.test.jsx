@@ -1,12 +1,17 @@
 import { describe, it } from "vitest";
-import { screen, render, fireEvent, userEvent } from "@/testUtils.jsx";
 
+import { screen, render, fireEvent, userEvent } from "@/testUtils.jsx";
+import { mockProfiles } from "@/__mocks__/profiles";
 import RateProfiles from "../RateProfiles";
+
+vi.mock("@/utils", () => ({
+  ...vi.importActual("@/utils"),
+  generateRandomProfiles: () => mockProfiles,
+}));
 
 describe("Profile Rating Page", () => {
   beforeEach(() => {
     render(<RateProfiles />);
-
   })
   it("renders the rating page", () => {
     const profileImage = screen.getByRole("img", {
