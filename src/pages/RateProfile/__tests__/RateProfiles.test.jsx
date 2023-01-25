@@ -12,19 +12,11 @@ describe("Profile Rating Page", () => {
     const profileImage = screen.getByRole("img", {
       name: /profile-image/i
     })
-    const profileName = screen.getByRole("heading", {
-      name: /name: /i
-    })
-    const profileAge = screen.getByRole("heading", {
-      name: /age: /i
-    })
-    const profileOccupation = screen.getByRole("heading", {
-      name: /occupation: /i
-    })
-    const profileDistance = screen.getByRole("heading", {
-      name: /miles away/i
-    })
-    const ratingValue = screen.getByRole("slider")
+    const profileName = screen.getByText(/name: /i)
+    const profileAge = screen.getByText(/age: /i)
+    const profileOccupation = screen.getByText(/occupation: /i)
+    const profileDistance = screen.getByText(/miles away/i)
+    const ratingInput = screen.getByRole("slider")
     const rateButton = screen.getByRole("button", {
       name: /rate!/i
     })
@@ -34,7 +26,7 @@ describe("Profile Rating Page", () => {
     expect(profileName).toHaveTextContent("John Smith");
     expect(profileAge).toHaveTextContent("52");
     expect(profileDistance).toHaveTextContent("5");
-    expect(ratingValue).toHaveValue("3");
+    expect(ratingInput).toHaveValue("3");
     expect(rateButton).toBeInTheDocument();
   });
 
@@ -62,28 +54,21 @@ describe("Profile Rating Page", () => {
     expect(ratingInput).toHaveValue("5");
   })
 
-  it("changes the profile after clicking the rate button", async () => {
+  it("changes the profile and resets rating after clicking the rate button", async () => {
     const user = userEvent.setup()
     const profileImage = screen.getByRole("img", {
       name: /profile-image/i
     })
-    const profileName = screen.getByRole("heading", {
-      name: /name: /i
-    })
-    const profileAge = screen.getByRole("heading", {
-      name: /age: /i
-    })
-    const profileOccupation = screen.getByRole("heading", {
-      name: /occupation: /i
-    })
-    const profileDistance = screen.getByRole("heading", {
-      name: /miles away/i
-    })
-    const ratingValue = screen.getByRole("slider")
+    const profileName = screen.getByText(/name: /i)
+    const profileAge = screen.getByText(/age: /i)
+    const profileOccupation = screen.getByText(/occupation: /i)
+    const profileDistance = screen.getByText(/miles away/i)
+    const ratingInput = screen.getByRole("slider")
     const rateButton = screen.getByRole("button", {
       name: /rate!/i
     })
 
+    fireEvent.change(ratingInput, { target: { value: 5 } });
     await user.click(rateButton);
 
     expect(profileImage).toBeInTheDocument();
@@ -91,7 +76,7 @@ describe("Profile Rating Page", () => {
     expect(profileName).toHaveTextContent("Jane Doe");
     expect(profileAge).toHaveTextContent("35");
     expect(profileDistance).toHaveTextContent("37");
-    expect(ratingValue).toHaveValue("3");
+    expect(ratingInput).toHaveValue("3");
     expect(rateButton).toBeInTheDocument();
   })
 });

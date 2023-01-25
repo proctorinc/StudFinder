@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 
 import { ProfilesProvider } from "@/context/ProfilesContext";
 
-
 const providers = ({ children }) => {
   return (
     <ProfilesProvider>

@@ -1,13 +1,16 @@
-const Profile = ({ user }) => {
+import { ImageHanger, ProfileDetails, ProfileImage } from "@/styles"
+
+const Profile = ({ profile }) => {
   return (
     <>
-      <img src={user.image_url} alt="profile-image" />
-      <div>
-        <h3>Name: {user.name}</h3>
-        <h3>Age: {user.age}</h3>
-        <h3>Occupation: {user.occupation}</h3>
-        <h3>{user.distance} miles away from you</h3>
-      </div>
+      <ImageHanger />
+      <ProfileImage src={profile.image_url} alt="profile-image" />
+      <ProfileDetails>
+        <p>Name: {profile.name}</p>
+        <p>Age: {profile.age}</p>
+        <p>Occupation: {profile.occupation}</p>
+        <p>{profile.distance} miles away from you</p>
+      </ProfileDetails>
     </>
   )
 }

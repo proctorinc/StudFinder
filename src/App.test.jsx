@@ -14,18 +14,10 @@ describe("App", () => {
     const profileImage = screen.getByRole("img", {
       name: /profile-image/i
     })
-    const profileName = screen.getByRole("heading", {
-      name: /name: /i
-    })
-    const profileAge = screen.getByRole("heading", {
-      name: /age: /i
-    })
-    const profileOccupation = screen.getByRole("heading", {
-      name: /occupation: /i
-    })
-    const profileDistance = screen.getByRole("heading", {
-      name: /miles away/i
-    })
+    const profileName = screen.getByText(/name: /i)
+    const profileAge = screen.getByText(/age: /i)
+    const profileOccupation = screen.getByText(/occupation: /i)
+    const profileDistance = screen.getByText(/miles away/i)
     const ratingValue = screen.getByRole("slider")
     const rateButton = screen.getByRole("button", {
       name: /rate!/i

@@ -1,24 +1,37 @@
 import { useState } from "react"
 
 import useProfiles from "@/hooks/useProfiles"
+import { INITIAL_RATING } from "@/constants"
+import { Container } from "@/styles"
 
 import Profile from "./Profile"
 
-
 const RateProfiles = () => {
-  const [rating, setRating] = useState(3)
+  const [rating, setRating] = useState(INITIAL_RATING)
   const { currentProfile, getNextProfile } = useProfiles()
 
   const handleRatingChange = (event) => {
       setRating(event.target.value)
   }
 
+  const handleRating = () => {
+    getNextProfile()
+    setRating(INITIAL_RATING)
+  }
+
   return (
-    <>
-      <Profile user={currentProfile} />
-      <input type="range" value={rating} min={1} max={5} step={1} onChange={handleRatingChange} />
-      <button onClick={getNextProfile} >Rate!</button>
-    </>
+    <Container>
+      <Profile profile={currentProfile} />
+      <input
+        type="range"
+        min={1}
+        max={5}
+        step={1}
+        value={rating}
+        onChange={handleRatingChange}
+      />
+      <button onClick={handleRating}>Rate!</button>
+    </Container>
   )
 }
 
