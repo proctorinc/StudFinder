@@ -9,19 +9,21 @@ import Profile from "./Profile"
 const RateProfiles = () => {
   const [rating, setRating] = useState(INITIAL_RATING)
   const { currentProfile, getNextProfile } = useProfiles()
+  const [disabled, setDisabled] = useState(false)
 
   const handleRatingChange = (event) => {
       setRating(event.target.value)
   }
 
   const handleRating = () => {
+    setDisabled(true)
     getNextProfile()
     setRating(INITIAL_RATING)
   }
 
   return (
     <Container>
-      <Profile profile={currentProfile} />
+      <Profile profile={currentProfile} setDisabled={setDisabled}/>
       <input
         type="range"
         min={1}
@@ -30,7 +32,7 @@ const RateProfiles = () => {
         value={rating}
         onChange={handleRatingChange}
       />
-      <button onClick={handleRating}>Rate!</button>
+      <button onClick={handleRating} disabled={disabled}>Rate!</button>
     </Container>
   )
 }

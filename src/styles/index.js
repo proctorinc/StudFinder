@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.div({
   display: "flex",
@@ -20,16 +21,27 @@ export const NavbarContainer = styled.div({
   fontSize: "2rem",
 });
 
+export const ProfileContainer = styled(motion.div)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
 export const ProfileImage = styled.img((props) => ({
   src: props.src,
   alt: props.alt,
-  width: "40%",
-  borderRadius: "3%",
-  backgroundColor: "white",
+  width: "300px",
+  border: "1px solid black",
+}));
+
+export const PictureFrame = styled.div({
   border: "10px solid gray",
   padding: "2rem",
+  borderRadius: "3%",
+  backgroundColor: "white",
   boxShadow: "0 8px 8px -4px gray",
-}));
+});
 
 export const ImageHanger = styled.div({
   width: "100px",
@@ -37,7 +49,7 @@ export const ImageHanger = styled.div({
   borderBottom: "2px solid black",
   borderRight: "2px solid black",
   transform: "rotate(-135deg)",
-  marginBottom: "-4rem",
+  marginBottom: "-3rem",
   boxShadow: "inset -7px -7px 5px -7px rgba(0,0,0,0.4)",
 });
 
@@ -48,7 +60,8 @@ export const ProfileDetails = styled.div({
   border: "2px solid gray",
   fontSize: "1rem",
   textAlign: "center",
-  width: "50%",
+  marginTop: "1rem",
+  padding: "0.25rem 1rem",
   borderRadius: "3%",
   lineHeight: "0%",
   backgroundColor: "white",
