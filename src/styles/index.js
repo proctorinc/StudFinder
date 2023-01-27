@@ -76,3 +76,11 @@ export const ProfileDetails = styled.div({
   backgroundColor: "white",
   boxShadow: "0 5px 5px -4px gray",
 });
+
+export const Slider = styled.input((props) => ({
+  type: "range",
+  min: 1,
+  max: 5,
+  step: 1,
+  value: 2,
+}));

@@ -11,3 +11,31 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.horizontal-slider {
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  margin: auto;
+}
+
+.slider-track {
+  position: relative;
+}
+
+.horizontal-slider .slider-track {
+  top: 20px;
+  height: 4px;
+}
+
+.horizontal-slider .slider-thumb {
+  width: 200px;
+  height: 200px;
+}
+
+.slider-marks {
+  border-radius: 50px;
+  border: 1px solid gray;
+  height: 10px;
+  width: 10px;
+}
