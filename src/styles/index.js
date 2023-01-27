@@ -21,6 +21,15 @@ export const NavbarContainer = styled.div({
   fontSize: "2rem",
 });
 
+export const WallBackground = styled(motion.div)({
+  backgroundImage: "url('wall-texture.avif')",
+  position: "absolute",
+  top: 0,
+  height: "100%",
+  width: "100%",
+  zIndex: -1,
+});
+
 export const ProfileContainer = styled(motion.div)({
   display: "flex",
   flexDirection: "column",
@@ -36,7 +45,7 @@ export const ProfileImage = styled.img((props) => ({
 }));
 
 export const PictureFrame = styled.div({
-  border: "10px solid gray",
+  border: "10px solid #613613",
   padding: "2rem",
   borderRadius: "3%",
   backgroundColor: "white",

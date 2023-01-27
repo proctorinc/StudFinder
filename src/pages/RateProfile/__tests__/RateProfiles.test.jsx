@@ -33,6 +33,7 @@ describe("Profile Rating Page", () => {
     expect(profileDistance).toHaveTextContent("5");
     expect(ratingInput).toHaveValue("3");
     expect(rateButton).toBeInTheDocument();
+
   });
 
   it("Renders changed rating", () => {

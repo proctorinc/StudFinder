@@ -2,9 +2,10 @@ import { useState } from "react"
 
 import useProfiles from "@/hooks/useProfiles"
 import { INITIAL_RATING } from "@/constants"
-import { Container } from "@/styles"
+import { Container, WallBackground } from "@/styles"
 
 import Profile from "./Profile"
+import { AnimatePresence } from "framer-motion"
 
 const RateProfiles = () => {
   const [rating, setRating] = useState(INITIAL_RATING)
@@ -23,6 +24,18 @@ const RateProfiles = () => {
 
   return (
     <Container>
+      <AnimatePresence mode="popLayout">
+        <WallBackground
+          key={currentProfile.name}
+          initial={{ x: "100vw"}}
+          animate={{ 
+            x: "0%",
+            y: "50%",
+            translateY: "-50%",
+            transition: { duration: 1 } }}
+          exit={{ x: "-100vw", transition: { duration: 1 } }}
+        />
+      </AnimatePresence>
       <Profile profile={currentProfile} setDisabled={setDisabled}/>
       <input
         type="range"
