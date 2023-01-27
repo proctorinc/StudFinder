@@ -48,17 +48,17 @@ export const PictureFrame = styled.div({
   border: "10px solid #613613",
   padding: "2rem",
   borderRadius: "3%",
-  backgroundColor: "white",
+  backgroundColor: "#fafafa",
   boxShadow: "0 8px 8px -4px gray",
 });
 
 export const ImageHanger = styled.div({
-  width: "100px",
-  height: "100px",
+  width: "90px",
+  height: "90px",
   borderBottom: "2px solid black",
   borderRight: "2px solid black",
   transform: "rotate(-135deg)",
-  marginBottom: "-3rem",
+  marginBottom: "-2.75rem",
   boxShadow: "inset -7px -7px 5px -7px rgba(0,0,0,0.4)",
 });
 
@@ -67,20 +67,32 @@ export const ProfileDetails = styled.div({
   flexDirection: "column",
   justifyContent: "center",
   border: "2px solid gray",
-  fontSize: "1rem",
+  fontSize: "13px",
   textAlign: "center",
   marginTop: "1rem",
   padding: "0.25rem 1rem",
   borderRadius: "3%",
-  lineHeight: "0%",
+  lineHeight: "0",
   backgroundColor: "white",
   boxShadow: "0 5px 5px -4px gray",
 });
 
-export const Slider = styled.input((props) => ({
-  type: "range",
-  min: 1,
-  max: 5,
-  step: 1,
-  value: 2,
+export const StyledSlider = styled.div({
+  width: "100%",
+  maxWidth: "500px",
+  height: "200px",
+  margin: "auto",
+});
+
+export const StyledSliderTrack = styled.div({
+  position: "relative",
+  top: "20px",
+  height: "4px",
+});
+
+export const StyledSliderThumb = styled.img(({ src, alt }) => ({
+  src: src,
+  alt: alt,
+  width: "200px",
+  height: "200px",
 }));
