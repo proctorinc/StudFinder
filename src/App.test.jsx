@@ -25,17 +25,21 @@ describe("App", () => {
     const profileAge = screen.getByText(/age: /i)
     const profileOccupation = screen.getByText(/occupation: /i)
     const profileDistance = screen.getByText(/miles away/i)
-    const ratingValue = screen.getByRole("slider")
+    const ratingInput = screen.getByRole("slider")
     const rateButton = screen.getByRole("button", {
       name: /rate!/i
     })
-    
+    const ratingValue = screen.getByRole("heading", {
+      name: 3
+    })
+
+    expect(ratingValue).toHaveTextContent("3");
     expect(profileImage).toBeInTheDocument();
     expect(profileOccupation).toHaveTextContent("Plumber");
     expect(profileName).toHaveTextContent("John Smith");
     expect(profileAge).toHaveTextContent("52");
     expect(profileDistance).toHaveTextContent("5");
-    expect(ratingValue).toHaveValue("3");
+    expect(ratingInput).toHaveValue("3");
     expect(rateButton).toBeInTheDocument();
   });
 });

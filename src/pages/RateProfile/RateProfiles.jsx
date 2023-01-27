@@ -37,6 +37,7 @@ const RateProfiles = () => {
         />
       </AnimatePresence>
       <Profile profile={currentProfile} setDisabled={setDisabled}/>
+      <h2>{rating}</h2>
       <input
         type="range"
         min={1}
