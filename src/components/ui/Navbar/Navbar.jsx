@@ -1,7 +1,7 @@
-import { NavbarContainer } from "@/styles"
+import styles from "./Navbar.module.css"
 
 export const Navbar = () => {
   return (
-    <NavbarContainer>StudFinder</NavbarContainer>
+    <div className={styles.container}>StudFinder</div>
   )
 }

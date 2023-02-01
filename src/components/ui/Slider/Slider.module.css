@@ -1,0 +1,19 @@
+.track {
+  width: 49%;
+  max-width: 303px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -30px;
+}
+
+.thumb {
+  width: 200px;
+  height: 200px;
+}
+
+.marking {
+  border-radius: 50px;
+  height: 20px;
+  width: 3px;
+  background-color: gray;
+}

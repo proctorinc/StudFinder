@@ -2,7 +2,7 @@ import { describe, it } from "vitest";
 
 import { screen, render, fireEvent, userEvent } from "@/testUtils.jsx";
 import { mockProfiles } from "@/__mocks__/profiles";
-import RateProfiles from "../RateProfiles";
+import RateProfiles from "./RateProfile";
 
 vi.mock("@/utils", () => ({
   ...vi.importActual("@/utils"),

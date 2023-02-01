@@ -1,0 +1,16 @@
+.button {
+  padding: 1rem, 2rem;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 1.5rem;
+}
+
+.disabled {
+  opacity: 0.5;
+  padding: 1rem, 2rem;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 1.5rem;
+}

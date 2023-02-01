@@ -3,7 +3,7 @@ import { describe, it } from "vitest";
 import { screen, render } from "@/testUtils.jsx";
 import { mockProfiles } from "@/__mocks__/profiles";
 
-import Profile from "../Profile";
+import Profile from "../Profile/Profile";
 
 describe("Profile Rating Page", () => {
   beforeEach(() => {

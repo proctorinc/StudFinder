@@ -1,26 +1,34 @@
 import ReactSlider from "react-slider"
-
-import { StyledSliderThumb, StyledSliderTrack } from "@/styles"
+import styles from "./Slider.module.css"
 
 export const Slider = ({ value, min, max, onChange }) => {
+
+  const Track = () => {
+    return (
+      <div className={styles.track}>
+        {[...Array(max)].map((_, i) => <div key={i} className={styles.marking} />
+  )}
+      </div>
+    )
+  }
+
+  const Thumb = ({ className, otherProps }) => {
+    console.log(className)
+    return (
+        <img className={[styles.thumb, className]} src="stud-finder.png" alt="stud-finder" {...otherProps} />
+    )
+  }
+
   return (
     <>
-      <div style={{ width: "49%", maxWidth: "303px", display: "flex", justifyContent: "space-between", marginBottom: "-30px" }}>
-        <div style={{ borderRadius: "50px", height: "20px", width: "3px", backgroundColor: "gray" }}/>
-        <div style={{ borderRadius: "50px", height: "20px", width: "3px", backgroundColor: "gray" }}/>
-        <div style={{ borderRadius: "50px", height: "20px", width: "3px", backgroundColor: "gray" }}/>
-        <div style={{ borderRadius: "50px", height: "20px", width: "3px", backgroundColor: "gray" }}/>
-        <div style={{ borderRadius: "50px", height: "20px", width: "3px", backgroundColor: "gray" }}/>
-      </div>
+      <Track />
       <ReactSlider
         className="horizontal-slider"
         value={value}
         min={min}
         max={max}
         step={1}
-        marks
-        renderTrack={(props) => <StyledSliderTrack {...props} />}
-        renderThumb={(props) => <StyledSliderThumb {...props} src="stud-finder.png" alt="stud-finder" />} //<p {...props}>{state.value}</p>}//
+        renderThumb={(props) => <Thumb {...props} />}
         onChange={onChange}
       />
     </>
