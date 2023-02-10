@@ -14,19 +14,15 @@ export const Profile = ({ profile, setDisabled }) => {
             x: "0%",
             y: "50%",
             translateY: "-50%",
-            transition: { duration: 1 } }}
+            transition: { ease: "easeInOut", duration: 1 } }}
           exit={{ x: "-100vw", transition: { duration: 1 } }}
           onAnimationComplete={() => setDisabled(false)}
         >
           <div className={styles.imageHanger} />
           <div className={styles.pictureFrame}>
-            <img className={styles.profileImage} src={profile.image_url} alt="profile-image" />
+            <img className={styles.profileImage} src={profile.picture} alt="profile-image" />
           </div>
           <div className={styles.profileDetails}>
-            {/* <p>Name: {profile.name}</p>
-            <p>Age: {profile.age}</p>
-            <p>Occupation: {profile.occupation}</p>
-            <p>{profile.distance} miles away from you</p> */}
             <p>{profile.name}, {profile.age}</p>
             <p>{profile.occupation}</p>
             <p>{profile.distance} miles away</p>

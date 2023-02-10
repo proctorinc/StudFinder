@@ -12,7 +12,7 @@ export const WallBackground = ({ animateOnChange }) => {
           x: "0%",
           y: "50%",
           translateY: "-50%",
-          transition: { duration: 1 } }}
+          transition: { ease: "easeInOut", duration: 1 } }}
         exit={{ x: "-100vw", transition: { duration: 1 } }}
       />
     </AnimatePresence>
