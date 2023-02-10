@@ -1,6 +1,6 @@
-import { Navbar } from '@/components/ui/Navbar'
-import RateProfiles from '@/pages/RateProfile/RateProfile'
-import { ProfilesProvider } from '@/context/ProfilesContext'
+import { Navbar } from "@/components/ui/Navbar";
+import RateProfiles from "@/pages/RateProfile/RateProfile";
+import { ProfilesProvider } from "@/context/ProfilesContext";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Navbar />
       <RateProfiles />
     </ProfilesProvider>
-  )
+  );
 }
 
-export default App
+export default App;

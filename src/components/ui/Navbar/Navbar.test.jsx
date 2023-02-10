@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar";
 describe("Navbar", () => {
   it("renders the navbar", async () => {
     render(<Navbar />);
-    const navbarTitle = screen.getByText(/studfinder/i)
+    const navbarTitle = screen.getByText(/studfinder/i);
     expect(navbarTitle).toBeInTheDocument();
   });
 });

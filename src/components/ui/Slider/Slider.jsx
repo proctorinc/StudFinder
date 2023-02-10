@@ -1,3 +1,5 @@
+import "./Slider.css";
+
 export const Slider = ({ value, min, max, onChange }) => {
   return (
     <input
@@ -8,5 +10,5 @@ export const Slider = ({ value, min, max, onChange }) => {
       value={value}
       onChange={(event) => onChange(event.target.value)}
     />
-  )
-}
+  );
+};

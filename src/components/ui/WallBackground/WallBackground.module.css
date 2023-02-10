@@ -1,5 +1,5 @@
 .background {
-  background-image: url('wall-texture.avif');
+  background-image: url("wall-texture.avif");
   position: absolute;
   top: 0;
   height: 100%;
