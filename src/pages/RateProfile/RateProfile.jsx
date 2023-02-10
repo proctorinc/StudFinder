@@ -9,8 +9,8 @@ import styles from "./RateProfile.module.css";
 import { WallBackground } from "@/components/ui/WallBackground"
 import { Button } from "@/components/ui/Button"
 
-const RateProfiles = () => {
-  const { currentProfile, getNextProfile } = useProfiles()
+const RateProfile = () => {
+  const { currentProfile, getNextProfile, isLoading } = useProfiles()
   const [rating, setRating] = useState(INITIAL_RATING)
   const [disabled, setDisabled] = useState(false)
 
@@ -18,6 +18,12 @@ const RateProfiles = () => {
     setDisabled(true)
     getNextProfile()
     setRating(INITIAL_RATING)
+  }
+
+  if (isLoading) {
+    return (
+      <h1>Loading...</h1>
+    )
   }
 
   return (
@@ -38,4 +44,4 @@ const RateProfiles = () => {
   )
 }
 
-export default RateProfiles
+export default RateProfile
