@@ -5,8 +5,8 @@ import { ProfilesProvider } from '@/context/ProfilesContext'
 function App() {
   return (
     <ProfilesProvider>
-        <Navbar />
-        <RateProfiles />
+      <Navbar />
+      <RateProfiles />
     </ProfilesProvider>
   )
 }
