@@ -1,50 +1,57 @@
-import { describe, it } from "vitest";
+import { describe, it, vi } from "vitest";
 
-import { screen, render, fireEvent, userEvent } from "@/testUtils.jsx";
-import { mockProfiles } from "@/__mocks__/profiles";
-import RateProfiles from "./RateProfile";
+import { screen, render, fireEvent } from "@/testUtils.jsx";
 
-vi.mock("@/utils", () => ({
-  ...vi.importActual("@/utils"),
-  generateRandomProfiles: () => mockProfiles,
+import RateProfile from "./RateProfile";
+
+window.ResizeObserver =
+    window.ResizeObserver ||
+    vi.fn().mockImplementation(() => ({
+        disconnect: vi.fn(),
+        observe: vi.fn(),
+        unobserve: vi.fn(),
+    }));
+
+vi.mock("@/utils", async () => ({
+  ...(await vi.importActual("@/utils")),
+  getRandomOccupation: () => "Plumber",
+  getRandomDistance: () => 55
 }));
 
 describe("Profile Rating Page", () => {
   beforeEach(() => {
-    render(<RateProfiles />);
+    render(<RateProfile />);
   })
-  it("renders the rating page", () => {
-    const profileImage = screen.getByRole("img", {
+  it("renders the rating page", async () => {
+    const profileImage = await screen.findByRole("img", {
       name: /profile-image/i
     })
-    const profileName = screen.getByText(/name: /i)
-    const profileAge = screen.getByText(/age: /i)
-    const profileOccupation = screen.getByText(/occupation: /i)
-    const profileDistance = screen.getByText(/miles away/i)
-    const ratingInput = screen.getByRole("slider")
-    const rateButton = screen.getByRole("button", {
-      name: /rate!/i
+    const profileName = await screen.findByText("John Smith, 52")
+    const profileOccupation = await screen.findByText("Plumber")
+    const profileDistance = await screen.findByText("55 miles away")
+    const ratingInput = await screen.findByRole("slider")
+    const rateButton = await screen.findByRole("button", {
+      name: /rate/i
     })
-    const ratingValue = screen.getByRole("heading", {
+    const ratingValue = await screen.findByRole("heading", {
       name: 3
     })
 
     expect(profileImage).toBeInTheDocument();
-    expect(profileOccupation).toHaveTextContent("Plumber");
-    expect(profileName).toHaveTextContent("John Smith");
-    expect(profileAge).toHaveTextContent("52");
-    expect(profileDistance).toHaveTextContent("5");
+    expect(profileOccupation).toBeInTheDocument();
+    expect(profileName).toBeInTheDocument();
+    expect(profileDistance).toBeInTheDocument();
     expect(ratingInput).toHaveValue("3");
     expect(rateButton).toBeInTheDocument();
     expect(ratingValue).toHaveTextContent("3");
   });
 
-  it("Renders changed rating", () => {
-    const ratingInput = screen.getByRole("slider");
+  it("Renders changed rating", async () => {
+    const ratingInput = await screen.findByRole("slider");
     
     fireEvent.change(ratingInput, { target: { value: 5 } });
 
-    const ratingValue = screen.getByRole("heading", {
+    const ratingValue = await screen.findByRole("heading", {
       name: 5
     })
 
@@ -52,11 +59,11 @@ describe("Profile Rating Page", () => {
     expect(ratingInput).toHaveValue("5");
   })
 
-  it("cannot change rating below zero", () => {
-    const ratingInput = screen.getByRole("slider");
+  it("cannot change rating below zero", async () => {
+    const ratingInput = await screen.findByRole("slider");
     
     fireEvent.change(ratingInput, { target: { value: -3 } });
-    const ratingValue = screen.getByRole("heading", {
+    const ratingValue = await screen.findByRole("heading", {
       name: 1
     })
     
@@ -64,8 +71,8 @@ describe("Profile Rating Page", () => {
     expect(ratingInput).toHaveValue("1");
   })
 
-  it("cannot change rating above 5", () => {
-    const ratingInput = screen.getByRole("slider");
+  it("cannot change rating above 5", async () => {
+    const ratingInput = await screen.findByRole("slider");
     
     fireEvent.change(ratingInput, { target: { value: 10 } });
     const ratingValue = screen.getByRole("heading", {
@@ -77,33 +84,30 @@ describe("Profile Rating Page", () => {
   })
 
   it("changes the profile and resets rating after clicking the rate button", async () => {
-    const user = userEvent.setup()
     const ratingInput = await screen.findByRole("slider")
     const rateButton = await screen.findByRole("button", {
-      name: /rate!/i
+      name: /rate/i
     })
     
     fireEvent.change(ratingInput, { target: { value: 5 } });
-    await user.click(rateButton);
+    fireEvent.click(rateButton);
 
-    const ratingValue = screen.getByRole("heading", {
+    const ratingValue = await screen.findByRole("heading", {
       name: 3
     })
     const profileImage = await screen.findByRole("img", {
       name: /profile-image/i
     })
-    const profileName = await screen.findByText(/name: /i)
-    const profileAge = await screen.findByText(/age: /i)
-    const profileOccupation = await screen.findByText(/occupation: /i)
-    const profileDistance = await screen.findByText(/miles away/i)
+    const profileName = await screen.findByText("Jane Doe, 35")
+    const profileOccupation = await screen.findAllByText("Plumber")
+    const profileDistance = await screen.findAllByText("55 miles away")
     const ratingInputModified = await screen.findByRole("slider")
 
-    expect(ratingValue).toHaveTextContent("3");
+    expect(ratingValue).toBeInTheDocument();
     expect(profileImage).toBeInTheDocument();
-    expect(profileOccupation).toHaveTextContent("Construction Worker");
-    expect(profileName).toHaveTextContent("Jane Doe");
-    expect(profileAge).toHaveTextContent("35");
-    expect(profileDistance).toHaveTextContent("37");
+    expect(profileOccupation).toHaveLength(2);
+    expect(profileName).toBeInTheDocument();
+    expect(profileDistance).toHaveLength(2);
     expect(ratingInputModified).toHaveValue("3");
     expect(rateButton).toBeInTheDocument();
   })
