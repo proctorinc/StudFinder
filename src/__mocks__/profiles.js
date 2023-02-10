@@ -2,6 +2,8 @@ export const mockProfiles = [
   {
     image_url: "profile-placeholder.png",
     name: "John Smith",
+    first: "John",
+    last: "Smith",
     occupation: "Plumber",
     age: 52,
     gender: "Male",
@@ -10,6 +12,8 @@ export const mockProfiles = [
   {
     image_url: "profile-placeholder.png",
     name: "Jane Doe",
+    first: "Jane",
+    last: "Doe",
     occupation: "Construction Worker",
     age: 35,
     gender: "Female",
@@ -18,6 +22,8 @@ export const mockProfiles = [
   {
     image_url: "profile-placeholder.png",
     name: "Bobby Bobberton",
+    first: "Bobby",
+    last: "Bobberton",
     occupation: "Construction Worker",
     age: 28,
     gender: "Male",
