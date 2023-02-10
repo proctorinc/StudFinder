@@ -1,26 +1,46 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-import { generateRandomProfiles } from "@/utils";
+import { getRandomDistance, getRandomOccupation } from "@/utils";
 
 const ProfilesContext = createContext();
 
 export const ProfilesProvider = ({ children }) => {
-  const [profileIndex, setProfileIndex] = useState(0);
-  const [profiles, setProfiles] = useState([])
-  const currentProfile = profiles[profileIndex];
-
-  if (profiles.length === 0) {
-    const randomProfiles = generateRandomProfiles()
-    setProfiles(randomProfiles)
-  }
+  const [currentProfile, setCurrentProfile] = useState()
+  const [numberUsersRated, setNumberUsersRated] = useState(1)
+  const isLoading = currentProfile === undefined
+  const [seed, _] = useState((Math.random() + 1).toString(36).substring(7));
 
   const getNextProfile = () => {
-    setProfileIndex((index) => index + 1 > profiles.length - 1 ? 0 : index + 1);
-  };
+    fetchNewProfile(numberUsersRated + 1)
+    setNumberUsersRated((previous) => previous + 1)
+  }
+
+  const fetchNewProfile = (page) => {
+    fetch(`https://randomuser.me/api/?nat=US&inc=gender,name,picture,dob&page=${page}&seed=${seed}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const profileData = data.results[0]
+        const userProfile = {
+          name: `${profileData.name.first} ${profileData.name.last}`,
+          gender: profileData.gender,
+          picture: profileData.picture.large,
+          age: profileData.dob.age,
+          distance: getRandomDistance(),
+          occupation: getRandomOccupation(),
+        }
+        setCurrentProfile(userProfile)
+      })
+      .catch(err => console.error(err))
+  }
+
+  useEffect(() => {
+    fetchNewProfile(numberUsersRated)
+  }, [])
 
   const contextData = {
     currentProfile,
     getNextProfile,
+    isLoading,
   };
 
   return (
