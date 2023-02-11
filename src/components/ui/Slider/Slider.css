@@ -2,7 +2,7 @@
   -webkit-appearance: none;
   width: 80%;
   max-width: 400px;
-  margin: auto;
+  margin: 3rem 0 9rem 0;
 }
 
 .slider::-webkit-slider-runnable-track {
