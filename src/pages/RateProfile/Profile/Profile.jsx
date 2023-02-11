@@ -19,8 +19,12 @@ export const Profile = ({ profile, setDisabled }) => {
           exit={{ x: "-100vw", transition: { duration: 1 } }}
           onAnimationComplete={() => setDisabled(false)}
         >
-          <div className={styles.imageHanger} />
-          <div className={styles.pictureFrame}>
+          <div className={styles.profilePicture}>
+            <img
+              className={styles.pictureFrame}
+              src={"picture-frame-2.png"}
+              alt="picture-frame"
+            />
             <img
               className={styles.profileImage}
               src={profile.picture}
