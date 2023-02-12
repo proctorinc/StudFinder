@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion"
 
+import { INITIAL_RATING } from "@/constants";
 import { Slider } from "@/components/ui/Slider";
 import useProfiles from "@/hooks/useProfiles";
-import { INITIAL_RATING } from "@/constants";
-import { WallBackground } from "@/components/ui/WallBackground";
 import { Button } from "@/components/ui/Button";
+import { RightArrow } from "@/components/icons/RightArrow";
+import { WallBackground } from "@/components/ui/WallBackground";
+import { CurvedDownArrow } from "@/components/icons/CurvedDownArrow";
 
 import { Profile } from "./Profile";
 import styles from "./RateProfile.module.css";
@@ -23,22 +25,27 @@ const RateProfile = () => {
 
   return (
     <div className={styles.container}>
-        {!ready || isLoading ? (
+        {(!ready || isLoading) ? (
           <>
-          <WallBackground animateOnChange={ready} initialAnimation={false} />
-          <AnimatePresence mode="popLayout">
-            <motion.div
-              key={ready}
-              style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "75vh", textAlign: "center", maxWidth: "500px", padding: "10px" }}
-              exit={{ x: "-100vw", transition: { duration: 1 } }}
-            >
-              <h2>Welcome to StudFinder!</h2>
-              <p>The dating app for construction and plumbing professionals. "Put the pipe in love" and find someone who "nails" your perfect match.</p>
-              <Button title="Find your Stud" onClick={() => setReady(true)} />
-              <p>\/ Use the stud finder to rate a profile from 1-5 \/</p>
-            </motion.div>
-        </AnimatePresence>
-        </>
+            <WallBackground animateOnChange={ready} initialAnimation={false} />
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={ready}
+                style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "75vh", textAlign: "center", maxWidth: "400px", marginTop: "5rem", padding: "1rem" }}
+                exit={{ x: "-100vw", transition: { duration: 1 } }}
+              >
+                <h1 style={{ fontSize: "3rem", lineHeight: "3rem", margin: 0 }}>Welcome to StudFinder!</h1>
+                <p>The dating app for construction and plumbing professionals. Build a relationship with someone who nails your perfect match. Get ready to turn up the heat on your love life!</p>
+                <Button className={styles.pulsing} title="Find your Stud" style={{ marginTop: "1rem" }} onClick={() => setReady(true)} />
+              </motion.div>
+            </AnimatePresence>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <p className={`${styles.instructionBubble} ${styles.largeBubble}`}>
+                Use the stud finder to choose a rating from 1-5
+              </p>
+              <CurvedDownArrow width="50px" />
+            </div>
+          </>
         ) : (
           <>
             <WallBackground animateOnChange={currentProfile.name} />
@@ -56,14 +63,23 @@ const RateProfile = () => {
           gap: "0px",
         }}
       >
-        <h2 style={{ marginBottom: "0" }}>{rating}</h2>
         <Slider
           value={rating}
           min={1}
           max={5}
           onChange={(value) => setRating(value)}
         />
-        {ready && !isLoading && <Button title="Rate" onClick={handleRating} disabled={disabled} />}
+        <div style={{ position: "relative" }}>
+          {(!ready || isLoading) && (
+            <div style={{ display: "flex", flexDirection: "column", position: "absolute", alignItems: "center", right: 0, marginRight: "5rem", marginTop: "-8.5rem" }}>
+              <p className={`${styles.instructionBubble} ${styles.smallBubble}`}>
+                Then click the Rate button!
+              </p>
+              <RightArrow width="50px" />
+            </div>
+          )}
+          <Button title="Rate" onClick={handleRating} disabled={disabled || !ready || isLoading} />
+        </div>
       </div>
     </div>
   );

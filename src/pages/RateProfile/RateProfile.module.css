@@ -8,3 +8,47 @@
   flex-grow: 1;
   width: 100vw;
 }
+
+.instructionBubble {
+  width: 100vw;
+  text-align: center;
+  left: 50vw;
+  background-color: var(--gray-opaque);
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 5px 5px -4px gray;
+
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: float 3s infinite;
+}
+
+.smallBubble {
+  max-width: 100px;
+}
+
+.largeBubble {
+  max-width: 150px;
+}
+
+@keyframes float {
+  0% {
+    transform: scale(1);
+  }
+
+	50% {
+		transform: scale(1);
+    transition: all 0.2s ease-in-out;
+	}
+
+	75% {
+		transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+	}
+
+	100% {
+		transform: scale(1);
+    transition: all 0.2s ease-in-out;
+	}
+}

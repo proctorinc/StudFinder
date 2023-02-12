@@ -12,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --main-color: #aaaaaa;
-  --main-color-hover: #aaaaaa3f;
-  --track-color: #ddd;
-  --mark-color: #aaaaaa;
+  --gray-dark: #aaaaaa3f;
+  --gray-medium: #aaaaaa;
+  --gray-light: #ddd;
+  --gray-opaque: rgba(229, 229, 229, 0.6);
 }
