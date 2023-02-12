@@ -2,38 +2,43 @@
   -webkit-appearance: none;
   width: 80%;
   max-width: 400px;
-  margin: 3rem 0 9rem 0;
+  margin: 3rem 0 8rem 0;
+  z-index: 50;
+}
+
+@media (min-width: 425px) {
+  .slider {
+    -webkit-appearance: none;
+    width: 80%;
+    max-width: 400px;
+    margin: 4rem 0 8rem 0;
+  }
 }
 
 .slider::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   top: 8px;
   height: 4px;
-  background: var(--track-color);
-}
-
-.slider::-webkit-slider-runnable-track.customSlider-track-0 {
-  background: var(--main-color);
+  background: var(--gray-light);
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: pointer;
   background: transparent;
-  width: 100px;
-  height: 200px;
+  width: 65px;
+  height: 140px;
   outline: none;
   transform: translateY(-25%);
-
   border-radius: 10px;
-  background-image: url("studfinder.png");
-  background-size: 200px;
+  background-image: url("./src/assets/studfinder.png");
+  background-size: 150px;
   background-repeat: no-repeat;
   background-position: 50%;
 }
 
 .slider::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 0 8px var(--main-color-hover);
+  box-shadow: 0 0 0 8px var(--gray-dark);
 }
 
 .mark {
@@ -41,13 +46,31 @@
   top: 6px;
   width: 1.5px;
   height: 8px;
-  background-color: var(--mark-color);
+  background-color: var(--gray-medium);
 }
 
 .mark.customSlider-mark-before {
-  background-color: var(--main-color);
+  background-color: var(--gray-medium);
 }
 
 .mark.customSlider-mark-active {
   display: none;
+}
+
+.track {
+  width: 65%;
+  max-width: 340px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -2rem;
+}
+
+@media (min-width: 425px) {
+  .track {
+    width: 55%;
+    max-width: 340px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -3rem;
+  }
 }
