@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite --port 80",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
