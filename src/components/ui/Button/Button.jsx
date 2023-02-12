@@ -1,9 +1,9 @@
 import styles from "./Button.module.css";
 
-export const Button = ({ title, disabled, ...otherProps }) => {
+export const Button = ({ title, disabled, className, ...otherProps }) => {
   return (
     <button
-      className={[disabled ? styles.disabled : styles.button]}
+      className={`${className} ${styles.button} ${disabled && styles.disabled}`}
       disabled={disabled}
       {...otherProps}
     >
