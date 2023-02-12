@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
 import styles from "./Profile.module.css";
@@ -22,7 +23,7 @@ export const Profile = ({ profile, setDisabled }) => {
           <div className={styles.profilePicture}>
             <img
               className={styles.pictureFrame}
-              src={"picture-frame-2.png"}
+              src={"./src/assets/picture-frame.png"}
               alt="picture-frame"
             />
             <img
