@@ -2,7 +2,11 @@
   -webkit-appearance: none;
   width: 80%;
   max-width: 400px;
-  margin: 3rem 0 8rem 0;
+  margin: 3rem 0 6.5rem 0;
+  background: transparent;
+}
+
+.slider:hover {
   z-index: 50;
 }
 
@@ -11,15 +15,17 @@
     -webkit-appearance: none;
     width: 80%;
     max-width: 400px;
-    margin: 4rem 0 8rem 0;
+    margin: 4rem 0 6.5rem 0;
+    background: transparent;
   }
 }
 
 .slider::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   top: 8px;
-  height: 4px;
-  background: var(--gray-light);
+  height: 10px;
+  background: transparent;
+  background-color: var(--gray-opaque);
 }
 
 .slider::-webkit-slider-thumb {
@@ -31,7 +37,7 @@
   outline: none;
   transform: translateY(-25%);
   border-radius: 10px;
-  background-image: url("./src/assets/studfinder.png");
+  background-image: url("/images/studfinder.png");
   background-size: 150px;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -63,6 +69,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: -2rem;
+  background: transparent;
 }
 
 @media (min-width: 425px) {
