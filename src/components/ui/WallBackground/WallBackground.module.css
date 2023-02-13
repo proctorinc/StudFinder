@@ -1,10 +1,10 @@
 .background {
-  background-image: url("/images/wall-texture.avif");
+  background-image: url("/images/wall-texture.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
   top: 0;
   height: 100%;
   width: 100%;
   z-index: -1;
-  background-repeat: no-repeat;
-  background-size: cover;
 }

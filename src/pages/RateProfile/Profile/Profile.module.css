@@ -13,24 +13,6 @@
   min-width: 150px;
 }
 
-@media (min-width: 425px) {
-  .profileDetails {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid gray;
-    font-size: 13px;
-    text-align: center;
-    margin-top: 0.5rem;
-    padding: 0.25rem 1rem;
-    border-radius: 2%;
-    line-height: 0;
-    background-color: white;
-    box-shadow: 0 5px 5px -4px gray;
-    min-width: 150px;
-  }
-}
-
 .profilePicture {
   display: flex;
   justify-content: center;
@@ -49,7 +31,7 @@
     position: relative;
     width: 100vw;
     height: 50vh;
-    max-width: 450px;
+    max-width: 400px;
   }
 }
 
