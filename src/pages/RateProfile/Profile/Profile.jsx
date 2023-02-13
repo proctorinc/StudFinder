@@ -23,7 +23,7 @@ export const Profile = ({ profile, setDisabled }) => {
           <div className={styles.profilePicture}>
             <img
               className={styles.pictureFrame}
-              src={"./src/assets/picture-frame.png"}
+              src={"/images/picture-frame.png"}
               alt="picture-frame"
             />
             <img
