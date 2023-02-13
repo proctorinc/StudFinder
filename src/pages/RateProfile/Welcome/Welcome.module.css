@@ -1,0 +1,37 @@
+.welcomeText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  text-align: center;
+  max-width: 400px;
+  margin-top: 2rem;
+  padding: 2.5rem;
+}
+
+.header {
+  font-size: 3rem;
+  line-height: 3rem;
+  margin: 0;
+}
+
+.instructionContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.instructionBubble {
+  max-width: 150px;
+  width: 100vw;
+  text-align: center;
+  left: 50vw;
+  background-color: var(--gray-opaque);
+  border: 1px solid var(--gray-dark);
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 5px 5px -4px gray;
+  transform: scale(1);
+  animation: float 3s infinite;
+}
