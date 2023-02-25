@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
 import styles from "./Profile.module.css";
